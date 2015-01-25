@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>根据input自身的宽度计算等比例的宽度</title>
+</head>
+<body>
+<script src="jquery.js"></script>
+<table border="1" width="1000">
+    <tbody>
+    <tr>
+        <td class="dialogText">
+            <label for="ytmc">油田名称</label>
+        </td>
+        <td class="dialogText">
+            <select id="ytmc" name="" title="油田名称" class="dialogSelect">
+                <option value=""></option>
+            </select>
+        </td>
+        <td class="dialogText">
+            平台名称
+        </td>
+        <td class="dialogText">
+            <select name="" title="平台名称" class="dialogSelect">
+                <option value=""></option>
+            </select>
+        </td>
+        <td class="dialogText">
+            系统名称
+        </td>
+        <td class="dialogText">
+            <select name="" title="系统名称" class="dialogSelect">
+                <option value=""></option>
+            </select>
+        </td>
+        <td class="dialogText" rowspan="23" valign="top">
+            <img src="__Public/image/plantdemo.jpg" alt="" width="300"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            设备类型
+        </td>
+        <td class="dialogText">
+            <select name="" title="设备类型" class="dialogSelect">
+                <option value=""></option>
+            </select>
+        </td>
+        <td class="dialogText">
+            压力容器编号
+        </td>
+        <td class="dialogText">
+            <input title="压力容器编号" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            压力容器名称
+        </td>
+        <td class="dialogText">
+            <input title="压力容器名称" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            压力容器类别
+        </td>
+        <td class="dialogText">
+            <select name="" title="油田名称" class="dialogSelect">
+                <option value=""></option>
+            </select>
+        </td>
+        <td class="dialogText">
+            大小尺寸
+        </td>
+        <td class="dialogText">
+            <input title="大小尺寸" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            资产编码
+        </td>
+        <td class="dialogText">
+            <input title="资产编码" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            登记表编号
+        </td>
+        <td class="dialogText">
+            <input title="登记表编号" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            注册登记机构
+        </td>
+        <td class="dialogText">
+            <input title="注册登记机构" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            注册登记日期
+        </td>
+        <td class="dialogText">
+            <input title="注册登记日期" class="dialogInput Wdate" type="text" onclick="WdatePicker();"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            使用证编号
+        </td>
+        <td class="dialogText">
+            <input title="使用证编号" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            注册登记人员
+        </td>
+        <td class="dialogText">
+            <input title="注册登记人员" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            使用单位
+        </td>
+        <td class="dialogText">
+            <input title="使用单位" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            使用单位地址
+        </td>
+        <td class="dialogText">
+            <input title="使用单位地址" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            邮政编码
+        </td>
+        <td class="dialogText">
+            <input title="邮政编码" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            安全管理部门
+        </td>
+        <td class="dialogText">
+            <input title="安全管理部门" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            安全管理人员
+        </td>
+        <td class="dialogText">
+            <input title="安全管理人员" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            联系电话
+        </td>
+        <td class="dialogText">
+            <input title="联系电话" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            设计单位
+        </td>
+        <td class="dialogText">
+            <input title="设计单位" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            设计单位代码
+        </td>
+        <td class="dialogText">
+            <input title="设计单位代码" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            制造单位
+        </td>
+        <td class="dialogText">
+            <input title="制造单位" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            制造单位代码
+        </td>
+        <td class="dialogText">
+            <input title="制造单位代码" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            制造国(地区)
+        </td>
+        <td class="dialogText">
+            <input title="制造国(地区)" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            制造日期
+        </td>
+        <td class="dialogText">
+            <input title="制造日期" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            出厂编号
+        </td>
+        <td class="dialogText">
+            <input title="出厂编号" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            产品监检单位
+        </td>
+        <td class="dialogText">
+            <input title="产品监检单位" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            监检单位代码
+        </td>
+        <td class="dialogText">
+            <input title="监检单位代码" class="dialogInput Wdate" type="text" onclick="WdatePicker();"/>
+        </td>
+        <td class="dialogText">
+            安装单位
+        </td>
+        <td class="dialogText">
+            <input title="安装单位" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            安装单位代码
+        </td>
+        <td class="dialogText">
+            <input title="安装单位代码" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            安装竣工日期
+        </td>
+        <td class="dialogText">
+            <input title="安装竣工日期" class="dialogInput Wdate" type="text" onclick="WdatePicker();"/>
+        </td>
+        <td class="dialogText">
+            投用日期
+        </td>
+        <td class="dialogText">
+            <input title="投用日期" class="dialogInput Wdate" type="text" onclick="WdatePicker();"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            购置日期
+        </td>
+        <td class="dialogText">
+            <input title="购置日期" class="dialogInput Wdate" type="text" onclick="WdatePicker();"/>
+        </td>
+        <td class="dialogText">
+            所在区域
+        </td>
+        <td class="dialogText">
+            <input title="所在区域" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            型号
+        </td>
+        <td class="dialogText">
+            <input title="型号" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            设备内径mm
+        </td>
+        <td class="dialogText">
+            <input title="设备内径mm" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            筒体材料
+        </td>
+        <td class="dialogText">
+            <input title="筒体材料" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            封头材料
+        </td>
+        <td class="dialogText">
+            <input title="封头材料" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            内衬材料
+        </td>
+        <td class="dialogText">
+            <input title="内衬材料" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            夹套材料
+        </td>
+        <td class="dialogText">
+            <input title="夹套材料" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            筒体厚度mm
+        </td>
+        <td class="dialogText">
+            <input title="筒体厚度mm" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            封头厚度mm
+        </td>
+        <td class="dialogText">
+            <input title="封头厚度mm" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            内衬壁厚mm
+        </td>
+        <td class="dialogText">
+            <input title="内衬壁厚mm" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            夹套厚度mm
+        </td>
+        <td class="dialogText">
+            <input title="夹套厚度mm" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            容积m<sup>3</sup>
+        </td>
+        <td class="dialogText">
+            <input title="容积" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            设备高(长)mm
+        </td>
+        <td class="dialogText">
+            <input title="设备高(长)mm" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            壳体重量kg
+        </td>
+        <td class="dialogText">
+            <input title="壳体重量kg" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            内件重量kg
+        </td>
+        <td class="dialogText">
+            <input title="内件重量kg" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            充装重量kg
+        </td>
+        <td class="dialogText">
+            <input title="充装重量kg" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            有无保温绝热mm
+        </td>
+        <td class="dialogText">
+            <input title="有无保温绝热mm" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            壳程设计压力MPa
+        </td>
+        <td class="dialogText">
+            <input title="壳程设计压力MPa" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            壳程设计温度℃
+        </td>
+        <td class="dialogText">
+            <input title="壳程设计温度℃" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            壳程最高压力MPa
+        </td>
+        <td class="dialogText">
+            <input title="壳程最高压力MPa" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            管程设计压力MPa
+        </td>
+        <td class="dialogText">
+            <input title="管程设计压力MPa" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            管程设计温度℃
+        </td>
+        <td class="dialogText">
+            <input title="管程设计温度℃" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            管程最高压力Mpa
+        </td>
+        <td class="dialogText">
+            <input title="管程最高压力Mpa" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            夹套设计压力MPa
+        </td>
+        <td class="dialogText">
+            <input title="夹套设计压力MPa" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            夹套设计温度℃
+        </td>
+        <td class="dialogText">
+            <input title="夹套设计温度℃" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            夹套最高压力Mpa
+        </td>
+        <td class="dialogText">
+            <input title="夹套最高压力Mpa" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            壳程操作压力Mpa
+        </td>
+        <td class="dialogText">
+            <input title="壳程操作压力Mpa" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            壳程操作温度℃
+        </td>
+        <td class="dialogText">
+            <input title="壳程操作温度℃" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            管程操作压力Mpa
+        </td>
+        <td class="dialogText">
+            <input title="管程操作压力Mpa" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            管程操作温度℃
+        </td>
+        <td class="dialogText">
+            <input title="管程操作温度℃" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            壳程介质
+        </td>
+        <td class="dialogText">
+            <input title="壳程介质" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            管程介质
+        </td>
+        <td class="dialogText">
+            <input title="管程介质" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            夹套介质
+        </td>
+        <td class="dialogText">
+            <input title="夹套介质" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            产权单位
+        </td>
+        <td class="dialogText">
+            <input title="产权单位" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">
+            产权单位代码
+        </td>
+        <td class="dialogText">
+            <input title="产权单位代码" class="dialogInput" type="text"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="dialogText">
+            设计/建造标准
+        </td>
+        <td class="dialogText" colspan="5">
+            <input title="设计/建造标准" class="dialogInput" type="text"/>
+        </td>
+        <td class="dialogText">&nbsp;
+
+        </td>
+    </tr>
+    </tbody>
+    </table>
+</body>
+</html>
+<script>
+	// alert($());
+	$('input').each(function(){
+		$(this).attr('class',$(this).width());
+	});
+</script>
