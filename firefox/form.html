@@ -31,15 +31,31 @@
             $('input[name="plantmake"]').click(function(){
                 var checkedvalue = $('input[name="plantmake"]:checked').val();
                 //alert(checkedvalue);
-                if(checkedvalue=='SS316不锈钢' || checkedvalue=='双相不锈钢' || checkedvalue=='6Mo不锈钢')
+                if(checkedvalue=='SS316不锈钢' || checkedvalue=='双相不锈钢')
                 {
                     $('#twoform input').attr('disabled','disabled');
                     $('#threeform input').attr('disabled','disabled');
                     $('#fourform input').attr('disabled','disabled');
-
-                    $('#twoformiswarm input').removeAttr('disabled');
+                    
+                    $('#twoformiswarm input').removeAttr('disabled').removeAttr('checked');
                     $('#operationwarm').removeAttr('disabled');
-                    $('#watertypechoose input').removeAttr('disabled');
+                    $('#watertypechoose input').removeAttr('disabled').removeAttr('checked');
+
+                    $('#is_sea2').attr('disabled','disabled');
+                }
+                else if(checkedvalue=='6Mo不锈钢')
+                {
+                    $('#twoform input').attr('disabled','disabled');
+                    $('#threeform input').attr('disabled','disabled');
+                    $('#fourform input').attr('disabled','disabled');
+                    
+
+                    $('#twoformiswarm input').removeAttr('disabled').removeAttr('checked');
+                    $('#operationwarm').removeAttr('disabled');
+                    $('#watertypechoose input').removeAttr('disabled').removeAttr('checked');
+
+                    $('#is_sea2').attr('disabled','disabled');
+                    $('#is_sea3').attr('disabled','disabled');
                 }
                 else if(checkedvalue=='钛及钛合金')
                 {
@@ -49,28 +65,31 @@
                 }
                 else if(checkedvalue=='碳钢' || checkedvalue=='低合金钢')
                 {
-                    $('#twoform input').removeAttr('disabled');
-                    $('#threeform input').removeAttr('disabled');
-                    $('#fourform input').removeAttr('disabled');    
+                    $('#twoform input').removeAttr('disabled').removeAttr('checked');
+                    $('#threeform input').removeAttr('disabled').removeAttr('checked');
+                    $('#fourform input').removeAttr('disabled').removeAttr('checked');
+                    $('input[name="is_sea"]').removeAttr('disabled').removeAttr('checked');
                 }
                 else if(checkedvalue=='铜镍合金')
                 {
                     $('#twoform input').attr('disabled','disabled');
                     $('#threeform input').attr('disabled','disabled');
                     $('#fourform input').attr('disabled','disabled');
-                    $('#watertypechoose input').removeAttr('disabled');   
+
+                    $('#watertypechoose input').removeAttr('disabled').removeAttr('checked');
+                    $('input[name="is_sea"]').removeAttr('disabled').removeAttr('checked');
                 }
                 else
                 {
-                    $('#twoform input').removeAttr('disabled');
-                    $('#fourform input').removeAttr('disabled');
+                    $('#twoform input').removeAttr('disabled').removeAttr('checked');
+                    $('#fourform input').removeAttr('disabled').removeAttr('checked');
                 }
             });
             
             //判断H2S选择时2项可选
             $('input[name="is_h2s"]').click(function(){
                 var h2svalue = $('input[name="is_h2s"]:checked').val();
-                alert(h2svalue);
+                //alert(h2svalue);
                 if(h2svalue=='是')
                 {
                     $('input[name="is_h2sfy"]').removeAttr('disabled');
@@ -83,6 +102,19 @@
                 }
             });
             
+            //水介质类型选择
+            $('input[name="is_sjz"]').click(function(){
+                var sjz = $('input[name="is_sjz"]:checked').val();
+                //alert(sjz);
+                if(sjz=='海水')
+                {
+                    $('input[name="is_sea"]').removeAttr('disabled');
+                }
+                else
+                {
+                    $('input[name="is_sea"]').attr('disabled','disabled');
+                }
+            });
         });
     </script>
     <fieldset>
