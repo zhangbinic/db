@@ -1,0 +1,327 @@
+<meta charset="utf-8">
+<script src="jquery.js"></script>
+<style>
+    body,table,tr,td{font-size:12px;}
+</style>
+<div id="show" style="display:none;">
+<div>油田名称<select name="" id="factoryn"></select></div>
+<div>平台名称<select name="" id="setn"></select></div>
+<div>设备类型<select name="" id="machine"></select></div>
+<div>设备名称<select name="" id="plant"></select></div>
+<fieldset>
+    <legend>该设备类型的部位分类</legend>
+    <div>筒体 封头 接管</div>
+</fieldset>
+<p></p>
+</div>
+<fieldset>
+    <legend>为确定腐蚀机理，请回答以下问题：</legend>
+    <fieldset>
+        <legend>1.选择设备制造材料</legend>
+        <input type="radio" value="碳钢" name="plantmake" id="tangang"/><label for="tangang">碳钢</label><br>
+        <input type="radio" value="低合金钢" name="plantmake" id="dihejin"/><label for="dihejin">低合金钢</label><br>
+        <input type="radio" value="SS316不锈钢" name="plantmake" id="ss316"/><label for="ss316">SS316不锈钢</label><br>
+        <input type="radio" value="双相不锈钢" name="plantmake" id="shuangxiang"/><label for="shuangxiang">双相不锈钢</label><br>
+        <input type="radio" value="6Mo不锈钢" name="plantmake" id="6mo"/><label for="6mo">6Mo不锈钢</label><br>
+        <input type="radio" value="铜镍合金" name="plantmake" id="tongnie"/><label for="tongnie">铜镍合金</label><br>
+        <input type="radio" value="钛及钛合金" name="plantmake" id="tai"/><label for="tai">钛及钛合金</label>
+    </fieldset>
+    <script>
+        $(function(){
+            $('input[name="plantmake"]').click(function(){
+                var checkedvalue = $('input[name="plantmake"]:checked').val();
+                //alert(checkedvalue);
+                if(checkedvalue=='SS316不锈钢' || checkedvalue=='双相不锈钢' || checkedvalue=='6Mo不锈钢')
+                {
+                    $('#twoform input').attr('disabled','disabled');
+                    $('#threeform input').attr('disabled','disabled');
+                    $('#fourform input').attr('disabled','disabled');
+
+                    $('#twoformiswarm input').removeAttr('disabled');
+                    $('#operationwarm').removeAttr('disabled');
+                    $('#watertypechoose input').removeAttr('disabled');
+                }
+                else if(checkedvalue=='钛及钛合金')
+                {
+                    $('#twoform input').attr('disabled','disabled');
+                    $('#threeform input').attr('disabled','disabled');
+                    $('#fourform input').attr('disabled','disabled');                    
+                }
+                else if(checkedvalue=='碳钢' || checkedvalue=='低合金钢')
+                {
+                    $('#twoform input').removeAttr('disabled');
+                    $('#threeform input').removeAttr('disabled');
+                    $('#fourform input').removeAttr('disabled');    
+                }
+                else if(checkedvalue=='铜镍合金')
+                {
+                    $('#twoform input').attr('disabled','disabled');
+                    $('#threeform input').attr('disabled','disabled');
+                    $('#fourform input').attr('disabled','disabled');
+                    $('#watertypechoose input').removeAttr('disabled');   
+                }
+                else
+                {
+                    $('#twoform input').removeAttr('disabled');
+                    $('#fourform input').removeAttr('disabled');
+                }
+            });
+            
+            //判断H2S选择时2项可选
+            $('input[name="is_h2s"]').click(function(){
+                var h2svalue = $('input[name="is_h2s"]:checked').val();
+                alert(h2svalue);
+                if(h2svalue=='是')
+                {
+                    $('input[name="is_h2sfy"]').removeAttr('disabled');
+                    $('input[name="is_h2shl"]').removeAttr('disabled');
+                }
+                else
+                {
+                    $('input[name="is_h2sfy"]').attr('disabled','disabled');
+                    $('input[name="is_h2shl"]').attr('disabled','disabled');
+                }
+            });
+            
+        });
+    </script>
+    <fieldset>
+        <legend>2.填写设备构造条件</legend>
+        <table border="1" width="100%" id="twoform">
+            <tr>
+                <td>是否有保温</td>
+                <td id="twoformiswarm">
+                    <input type="radio" name="is_warm" id="is_warm1" value="是"/><label for="is_warm1">是</label>
+                    <input type="radio" name="is_warm" id="is_warm2" value="否"/><label for="is_warm2">否</label>
+                </td>
+                <td>是否焊后热处理</td>
+                <td>
+                    <input type="radio" name="is_hanhou" id="is_hanhou1" value="是"/><label for="is_hanhou1">是</label>
+                    <input type="radio" name="is_hanhou" id="is_hanhou2" value="否"/><label for="is_hanhou2">否</label>
+                </td>
+            </tr>
+            <tr>
+                <td>是否为耐腐蚀合金</td>
+                <td>
+                    <input type="radio" name="is_naifushi" id="is_naifushi1" value="是"/><label for="is_naifushi1">是</label>
+                    <input type="radio" name="is_naifushi" id="is_naifushi2" value="否"/><label for="is_naifushi2">否</label>
+                </td>
+                <td>是否符合抗开裂标准</td>
+                <td>
+                    <input type="radio" name="is_kangkailie" id="is_kangkailie1" value="是"/><label for="is_kangkailie1">是</label>
+                    <input type="radio" name="is_kangkailie" id="is_kangkailie2" value="否"/><label for="is_kangkailie2">否</label>
+                </td>
+            </tr>
+            <tr>
+                <td>材料硫含量</td>
+                <td>
+                    <input type="radio" name="is_shl" id="is_shl1" value="<0.002%"/><label for="is_shl1"><0.002%</label>
+                    <input type="radio" name="is_shl" id="is_shl2" value="0.002~0.01%"/><label for="is_shl2">0.002~0.01%</label>
+                    <input type="radio" name="is_shl" id="is_shl3" value=">0.01%"/><label for="is_shl3">>0.01%</label>
+                </td>
+                <td>布氏硬度</td>
+                <td>
+                    <input type="radio" name="is_bushi" id="is_bushi1" value="<200HB"/><label for="is_bushi1"><200HB</label>
+                    <input type="radio" name="is_bushi" id="is_bushi2" value="200-237HB"/><label for="is_bushi2">200-237HB</label>
+                    <input type="radio" name="is_bushi" id="is_bushi3" value=">237HB"/><label for="is_bushi3">>237HB</label>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <fieldset id="threeform">
+        <legend>3.填写设备操作条件</legend>
+        操作温度：<input type="text" id="operationwarm">
+        操作压力(绝压)：<input type="text" id="operationyali">MPa
+        流速：<input type="text" id="speed">m/s
+        流体密度：<input type="text" id="midu">kg/m<sup>3</sup>
+    </fieldset>
+    <fieldset id="fourform">
+        <legend>4.填写介质条件</legend>
+        <table border="1" width="100%">
+            <tr>
+                <td>介质状态</td>
+                <td>
+                    <input type="radio" name="jiezhi" id="jiezhi1" value="气态"/><label for="jiezhi1">气态</label>
+                    <input type="radio" name="jiezhi" id="jiezhi2" value="液态"/><label for="jiezhi2">液态</label>
+                    <input type="radio" name="jiezhi" id="jiezhi3" value="气液混合"/><label for="jiezhi3">气液混合</label>
+                </td>
+                <td>PH值</td>
+                <td>
+                    <input type="radio" name="ph" id="ph1" value="<5.5"/><label for="ph1"><5.5</label>
+                    <input type="radio" name="ph" id="ph2" value="5.5-7.5"/><label for="ph2">5.5-7.5</label>
+                    <input type="radio" name="ph" id="ph3" value="7.6-8.3"/><label for="ph3">7.6-8.3</label>
+                    <input type="radio" name="ph" id="ph4" value="8.4-8.9"/><label for="ph4">8.4-8.9</label>
+                    <input type="radio" name="ph" id="ph5" value="9.0"/><label for="ph5">>9.0</label>
+                </td>
+            </tr>
+            <tr>
+                <td>介质中水含量(质量)</td>
+                <td><input type="text" id="zhiliang"/> %</td>
+                <td>介质中水含量(体积)</td>
+                <td>
+                    <input type="radio" name="tiji" id="tiji1" value="<=1"/><label for="tiji1"><=1</label>
+                    <input type="radio" name="tiji" id="tiji2" value="1-5"/><label for="tiji2">1-5</label>
+                    <input type="radio" name="tiji" id="tiji3" value=">=5"/><label for="tiji3">>=5</label>
+                </td>
+            </tr>
+            <tr>
+                <td>是否经过分离器分离</td>
+                <td>
+                    <input type="radio" name="is_fenliqi" id="is_fenliqi1" value="是"/><label for="is_fenliqi1">是</label>
+                    <input type="radio" name="is_fenliqi" id="is_fenliqi2" value="否"/><label for="is_fenliqi2">否</label>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>介质是否含有CO<sub>2</sub></td>
+                <td>
+                    <input type="radio" name="is_co2" id="is_co21" value="是"/><label for="is_co21">是</label>
+                    <input type="radio" name="is_co2" id="is_co22" value="否"/><label for="is_co22">否</label>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <fieldset>
+            <legend>
+                介质是否含有H<sub>2</sub>S
+                <input type="radio" name="is_h2s" id="is_h2s1" value="是"/><label for="is_h2s1">是</label>
+                <input type="radio" name="is_h2s" id="is_h2s2" value="否"/><label for="is_h2s2">否</label>
+            </legend>
+            <div>
+            H<sub>2</sub>S分压(绝压)：
+                <input type="radio" name="is_h2sfy" id="is_h2sfy1" value="否"/><label for="is_h2sfy1"><0.0003MPa</label>
+                <input type="radio" name="is_h2sfy" id="is_h2sfy2" value="否"/><label for="is_h2sfy2">>=0.0003MPa</label>
+            </div>
+            <div>
+                H<sub>2</sub>S含量：
+                <input type="radio" name="is_h2shl" id="is_h2shl1" value="<50ppm"/><label for="is_h2shl1"><50ppm</label>
+                <input type="radio" name="is_h2shl" id="is_h2shl2" value="50ppm-1000ppm"/><label for="is_h2shl2">50ppm-1000ppm</label>
+                <input type="radio" name="is_h2shl" id="is_h2shl3" value="1000ppm-10000ppm"/><label for="is_h2shl3">1000ppm-10000ppm</label>
+                <input type="radio" name="is_h2shl" id="is_h2shl4" value=">10000ppm"/><label for="is_h2shl4">>10000ppm</label>
+            </div>
+        </fieldset>
+        <div>
+            介质是否含有微生物：
+            <input type="radio" name="is_wsw" id="is_wsw1" value="是"/><label for="is_wsw1">是</label>
+            <input type="radio" name="is_wsw" id="is_wsw2" value="否"/><label for="is_wsw2">否</label>
+        </div>
+        <div>
+            介质是否含有固体：
+            <input type="radio" name="is_guti" id="is_guti1" value="是"/><label for="is_guti1">是</label>
+            <input type="radio" name="is_guti" id="is_guti2" value="否"/><label for="is_guti2">否</label>
+        </div>
+        <fieldset id="watertypechoose">
+            <legend>水介质类型选择</legend>
+            <input type="radio" name="is_sjz" id="is_sjz1" value="海水"/><label for="is_sjz1">海水</label>
+            海水类型：
+            <input type="radio" name="is_sea" id="is_sea1" value="原始海水"/><label for="is_sea1">原始海水</label>
+            <input type="radio" name="is_sea" id="is_sea2" value="海水+杀菌/氯气"/><label for="is_sea2">海水+杀菌/氯气</label>
+            <input type="radio" name="is_sea" id="is_sea3" value="低氧海水"/><label for="is_sea3">低氧海水</label>
+            <br>
+            <input type="radio" name="is_sjz" id="is_sjz2" value="新鲜水(C1-含量<200ppm)"/><label for="is_sjz2">新鲜水(C1-含量<200ppm)</label><br>
+            <input type="radio" name="is_sjz" id="is_sjz3" value="闭排水"/><label for="is_sjz3">闭排水</label><br>
+            <input type="radio" name="is_sjz" id="is_sjz4" value="开排水"/><label for="is_sjz4">开排水</label><br>
+            <input type="radio" name="is_sjz" id="is_sjz5" value="生活污水"/><label for="is_sjz5">生活污水</label><br>
+            <input type="radio" name="is_sjz" id="is_sjz6" value="其他"/><label for="is_sjz6">其他</label>
+        </fieldset>
+    </fieldset>
+    <fieldset>
+        <legend>5.结垢趋势分析</legend>
+        <fieldset>
+            <legend>碳酸钙结垢计算</legend>
+            <table border="1" width="100%">
+                <tr>
+                    <td>PH值</td>
+                    <td><input type="text" id="phv"/></td>
+                    <td>修正系数</td>
+                    <td><input type="text" id="xzxs"/></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Ca<sup>2+</sup>浓度</td>
+                    <td><input type="text" id="canongdu"/>mol/L</td>
+                    <td>CO<sub>3</sub><sup>2-</sup>浓度</td>
+                    <td><input type="text" id="conongdu"/>mol/L</td>
+                    <td>HCO<sub>3</sub><sup>-</sup>浓度</td>
+                    <td><input type="text" id="hconongdu"/>mol/L</td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>硫酸钙结垢计算</legend>
+            <table border="1" width="100%">
+                <tr>
+                    <td>Ksp溶度积常数</td>
+                    <td><input type="text" id="kspnongdu"/></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Ca<sup>2+</sup>浓度</td>
+                    <td><input type="text" id="lcanongdu"/>mol/L</td>
+                    <td>SO<sub>4</sub><sup>2-</sup>浓度</td>
+                    <td><input type="text" id="sonongdu"/>mol/L</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>硫酸钡结垢计算</legend>
+            <table border="1" width="100%">
+                <tr>
+                    <td>Ksp溶度积常数</td>
+                    <td><input type="text" id="lkspnongdu"/></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Ba<sup>2+</sup>浓度</td>
+                    <td><input type="text" id="banongdu"/>mol/L</td>
+                    <td>SO<sub>4</sub><sup>2-</sup>浓度</td>
+                    <td><input type="text" id="so4nongdu"/>mol/L</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>硫酸锶结垢计算</legend>
+            <table border="1" width="100%">
+                <tr>
+                    <td>Ksp溶度积常数</td>
+                    <td><input type="text" id="skspnongdu"/></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Sr<sup>2+</sup>浓度</td>
+                    <td><input type="text" id="srnongdu"/>mol/L</td>
+                    <td>SO<sub>4</sub><sup>2-</sup>浓度</td>
+                    <td><input type="text" id="sosrnongdu"/>mol/L</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </fieldset>
+    </fieldset>
+</fieldset>
+<fieldset>
+    <legend><button>分析计算</button></legend>
+    <div>1.外部腐蚀机理</div>
+    <div>2.CO2腐蚀机理</div>
+    <div>3.微生物腐蚀机理</div>
+    <div>4.水腐蚀机理</div>
+    <div>5.湿H2S应力腐蚀开裂机理</div>
+    <div>6.冲蚀趋势</div>
+    <div>7.结垢趋势</div>
+</fieldset>
