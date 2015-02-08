@@ -6,3 +6,7 @@ var Browser = navigator.userAgent.toLowerCase();
 var isIE = Browser.indexOf('msie');
 //alert(isIE);
 //return false;
+
+2015-2-6
+1.解决textarea,select,radio必填项提示的更改
+
