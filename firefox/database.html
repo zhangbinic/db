@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>演示表单提取为数据表</title>
+<script src="jquery.js"></script>
+</head>
+
+<body>
+<form data="runstate" id="runstate">
+<table border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="537" colspan="4" valign="top">平台延长运行周期经济效益</td>
+  </tr>
+  <tr>
+    <td width="134" valign="top"><p>油田名称 </p></td>
+    <td width="134" valign="top"><select name="factory" data="varchar(100)"></select></td>
+    <td width="134" valign="top"><p>平台名称 </p></td>
+    <td width="134" valign="top"><select name="set" data="char(32)"></select></td>
+  </tr>
+  <tr>
+    <td width="134" valign="top"><p>运行周期 <br />
+      （RBI评估前）（年） </p></td>
+    <td width="134"><input type="text" name="beforeruntime" data="tinyint(4)" /></td>
+    <td width="134" valign="top"><p>运行周期 <br />
+      （RBI评估后）（年） </p></td>
+    <td width="134"><input type="text" name="afterruntime" data="int(11)" /></td>
+  </tr>
+  <tr>
+    <td width="134" valign="top"><p align="left">记录人 </p></td>
+    <td width="134"><input type="text" name="recordusername" data="varchar(100)"/></td>
+    <td width="134" valign="top"><p align="left">记录日期 </p></td>
+    <td width="134" valign="top"><input type="text" name="recordtime" data="datetime"/></td>
+  </tr>
+</table>
+<button id="createtable">start</button>
+</form>
+<script>
+  var selectfield = '';
+  var inputfield = '';
+  var allfield = '';
+  var tablename = '';
+
+  $('#createtable').click(function(){
+    selectfield = getformdata('select');
+    // alert(selectfield);
+    inputfield = getformdata('input');
+    // alert(inputfield);
+    allfield = selectfield + inputfield;
+    // alert(allfield);
+    
+    tablename = $('#runstate').attr('data');
+
+    $.getJSON('database.php?field='+allfield+'&table='+tablename,function(data){
+
+    });
+
+  });
+
+  function getformdata(formlabel)
+  {
+    var field = '';
+    $(formlabel).each(function(){
+      var name = $(this).attr('name');
+      // alert(name);
+      var datatype = $(this).attr('data');
+      // alert(datatype);
+      var comment = $(this).parent().prev();
+      // console.log(comment[0]['textContent']);
+      comment = comment[0]['textContent'];
+      // console.log($(this).parent().prev());
+      // alert(comment);
+      field += comment+':'+name+':'+datatype+'||';
+    });
+    return field;
+  }
+
+</script>
+</body>
+</html>
