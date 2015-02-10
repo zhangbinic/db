@@ -52,7 +52,10 @@
     tablename = $('#runstate').attr('data');
 
     $.getJSON('database.php?field='+allfield+'&table='+tablename,function(data){
-
+        if(data.info =='success')
+        {
+          alert(data.info);
+        }
     });
 
   });
