@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>获取表单的标题，然后进行翻译为数据表字段</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <link href="" rel="stylesheet" type="text/css"/>
+    <script src="jquery.js"></script>
+    <script type="text/javascript" src="tool.js"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <td>RBI评估前压力容器泄漏次数（次）</td>
+        <td><input type="text" value="" class="dialogInput" name=""></td>
+        <td>RBI评估前压力管线泄漏次数（次）</td>
+        <td><input type="text" value="" class="dialogInput" name=""></td>
+    </tr>
+    <tr>
+        <td>RBI评估后压力容器泄漏次数（次）</td>
+        <td><input type="text" value="" class="dialogInput" name=""></td>
+        <td>RBI评估后压力管线泄漏次数（次）</td>
+        <td><input type="text" value="" class="dialogInput" name=""></td>
+    </tr>
+    <tr>
+        <td>RBI评估前发生泄漏的压力容器总数(台)</td>
+        <td><input type="text" value="" class="dialogInput" name=""></td>
+        <td>RBI评估前发生泄漏的压力管线总数(条)</td>
+        <td><input type="text" value="" class="dialogInput" name=""></td>
+    </tr>
+    <tr>
+        <td>RBI评估后发生泄漏的压力容器总数(台)</td>
+        <td><input type="text" value="" class="dialogInput" name=""></td>
+        <td>RBI评估后发生泄漏的压力管线总数(条)</td>
+        <td><input type="text" value="" class="dialogInput" name=""></td>
+    </tr>
+</table>
+<script type="text/javascript">
+    var selectfield = '';
+    var inputfield = '';
+    var allfield = '';
+
+    selectfield = getformdata('select');
+    // alert(selectfield);
+    inputfield = getformdata('input');
+    // alert(inputfield);
+    allfield = selectfield + inputfield;
+    alert(allfield);
+</script>
+
+
+
+
+
+</body>
+</html>

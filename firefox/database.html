@@ -3,7 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>演示表单提取为数据表</title>
-<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="tool.js"></script>
 </head>
 
 <body>
@@ -59,25 +60,6 @@
     });
 
   });
-
-  function getformdata(formlabel)
-  {
-    var field = '';
-    $(formlabel).each(function(){
-      var name = $(this).attr('name');
-      // alert(name);
-      var datatype = $(this).attr('data');
-      // alert(datatype);
-      var comment = $(this).parent().prev();
-      // console.log(comment[0]['textContent']);
-      comment = comment[0]['textContent'];
-      // console.log($(this).parent().prev());
-      // alert(comment);
-      field += comment+':'+name+':'+datatype+'||';
-    });
-    return field;
-  }
-
 </script>
 </body>
 </html>

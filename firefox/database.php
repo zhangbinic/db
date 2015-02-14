@@ -30,8 +30,8 @@ CREATE TABLE `{$tablename}` ({$sql}) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=
 // print_r($fieldarr);
 // echo $executesql;
 file_put_contents("E:/1.sql", $executesql);
-// mysql_connect('localhost:3310','root','bhxz');
-mysql_connect('localhost','root','111111');
+mysql_connect('localhost:3310','root','bhxz');
+// mysql_connect('localhost','root','111111');
 mysql_select_db('test');
 mysql_query('set names utf8');
 $content = file_get_contents('E:/1.sql');
