@@ -30,8 +30,8 @@ $field = array(
     'pipeavgcost',
     'containerstoppageloss',
     'pipestoppageloss',
-    'containertotalnumber',
-    'pipetotalnumber',
+    'qxcontainertotalnumber',
+    'qxpipetotalnumber',
     'containerlongestdowntime',
     'pipelongestdowntime',
     'containeravgtime',
@@ -120,3 +120,5 @@ $sql = "create table bh_Report_Rbilist (`id` int(11) NOT NULL AUTO_INCREMENT,PRI
 
 echo $sql;
 
+
+//http://192.168.123.63/javascript/trunk/firefox/tablecomment.php
